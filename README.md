@@ -1,2 +1,2 @@
 # assignment-4
-The goal of this assignment is to gain hands on experience with securely deploying your application. To achieve this you will be working with Docker, Docker compose, Docker secrets, Notary (Docker Content Trust), and Kubernetes. By the end of this assignment you should have an understanding of how to secure the deployment and updates of an application after the code is built and tested. The assignment is to containerize and securely deploy your spell checking Web service. This document outlines the steps required to achieve this goal.
+Docker
