@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a href="{{url_for('logout')}}">Logout</a> | <a href="{{url_for('history')}}">Query History</a> {% if admin %}| <a href="{{url_for('login_history')}}">Login and Logout History</a> {% endif %}
+    <hr>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <form method="post" autocomplete="off">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                {% if admin %}
+                <input name="userquery" id="userquery" class="form-control" placeholder="Search a User" required autofocus>
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Search">
+                {% endif %}
+                <h1 class="h3 mb-3 font-weight-normal">Query History</h1>
+                
+                <b>Total Number of Queries:</b><p id="numqueries">{{ qCount }}</p>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID </th>
+                        <th>Queried By</th>
+                        <th>Query Text</th>                        
+                        <th>Query Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for query in queries %}
+                    <tr>
+                        <td><a  id=query{{query.qid}} href="{{url_for('query', id=query.qid)}}">{{ query.qid }}</a></td>
+                        <td>{{ query.username }}</td>
+                        <td>{{ query.qtext }}</td>
+                        <td>{{ query.qresult }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+               </table>
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+
+{% endblock %}

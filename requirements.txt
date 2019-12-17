@@ -1,0 +1,8 @@
+flask-talisman
+passlib
+pytest
+tox
+Flask
+Flask-WTF
+bleach
+

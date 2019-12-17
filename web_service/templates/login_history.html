@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <a href="{{url_for('logout')}}">Logout</a> | <a href="{{url_for('history')}}">Query History</a> {% if admin %}| <a href="{{url_for('login_history')}}">Login/Logout Query History</a> {% endif %}
+    <hr>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <form method="POST" autocomplete="off">
+
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                    {% if admin %}
+                    <input name="userid" id="userid"  class="form-control" placeholder="Search User"required autofocus>
+                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Search">
+                    {% endif %}
+
+                <h1 class="h3 mb-3 font-weight-normal">Login/Logout History</h1>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id </th>
+                        <th>Username</th>
+                        <th>Login</th>                        
+                        <th>Logout</th>      
+                    </tr>
+                </thead>
+                <tbody>
+
+                {% for query in queries %}
+                    <tr>
+                        <td><p id = login{{query.lid}}>{{ query.lid }}</p></td>
+                        <td>{{ query.username }}</td>
+                        <td><p id = login{{query.lid}}_time>{{ query.lintime }}</p></td>
+                        <td><p id = logout{{query.lid}}_time>{{ query.louttime if (query.louttime) else 'No logout time'}}</p></td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+               </table>
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+
+{% endblock %}

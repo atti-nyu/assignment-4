@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block header %}
+  <h1>{% block title %}Spell Checker{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+
+<form method="post" autocomplete="off">
+  <h1>Input Text</h1>
+  <textarea name="inputtext" id="inputtext" required autofocus></textarea>
+  
+  <input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit">
+  <h1>Output Text</h1>
+  <p id="outputtext">{{ outputtext }}</p>
+  <h1>Misspelled Words</h1>
+  <p id="misspelled">{{ misspelled }}</p>
+
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+</form>
+
+
+{% endblock %}

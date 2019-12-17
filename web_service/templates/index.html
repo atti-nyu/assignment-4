@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block header %}
+  <h1>{% block title %}Home{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+
+<div class="homepage text-center">
+    <h1>NYU Application Security Assignment 3</h1>
+    <ul style="margin-top: 20px">
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        <li><a href="/spell_check">Spell Check</a></li>
+    </ul>
+</div>
+
+{% endblock %}

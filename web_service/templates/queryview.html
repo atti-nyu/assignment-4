@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+{% endblock %}
+{% block content %}
+
+<div class="container">
+        <a href="{{url_for('logout')}}">Logout</a> | <a href="{{url_for('history')}}">Query History</a> {% if admin %}| <a href="{{url_for('login_history')}}">Login/Logout Query History</a> {% endif %}
+    <hr>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+                <h1 class="h3 mb-3 font-weight-normal">Query Result</h1>
+
+                <b>Query Id:</b>
+                <p id="queryid">{{ query.qid }}</p>
+
+                <b>Queried By:</b>
+                <p id="username">{{ query.username }}</p>
+
+                <b>Query Text:</b>
+                <p id="querytext">{{ query.qtext }}</p>
+                
+                <b>Misspelled Words:</b>
+                <p id="queryresults">{{ query.qresult }}</p>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+
+
+{% endblock %}
