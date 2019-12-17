@@ -1,6 +1,6 @@
 # assignment-4
 Docker
 
-Run: `sudo docker container ls`
+Run: `sudo docker-compose up -d`
 
-Stop: `sudo docker container stop`
+Stop: `sudo docker-compose stop`
